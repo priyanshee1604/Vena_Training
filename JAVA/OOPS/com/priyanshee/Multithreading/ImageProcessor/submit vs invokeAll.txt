@@ -1,0 +1,40 @@
+| Method        | Behavior                                                                       |
+| ------------- | ------------------------------------------------------------------------------ |
+| `submit()`    | Submits **one task** for execution and **returns immediately** with a `Future` |
+| `invokeAll()` | Submits a **collection of tasks** and **blocks** until **all** are complete    |
+
+✅ 1. submit() — Asynchronous, Non-blocking
+java
+Copy code
+Future<T> submit(Callable<T> task)
+Internally, submit() wraps your Callable into a FutureTask and puts it in the thread pool's work queue.
+
+It returns immediately, giving you the Future object, even though the task may not have started yet.
+
+You can choose to block later by calling future.get().
+
+✅ 2. invokeAll() — Blocking until all complete
+java
+Copy code
+<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
+Internally, it loops through all tasks, submits them, then waits for every one to complete.
+
+You can’t retrieve a single result until all tasks are done.
+
+----------------------------------------------------------------------------
+✅ Option 1:
+We can get the value of a Future non-blockingly by checking whether the task is done before calling get().
+Java’s Future interface provides the isDone() method for this purpose.
+
+✅ Option 2: Using ExecutorCompletionService
+This is great when you have many parallel tasks and want to process them as soon as each one finishes
+ — not in the order you submitted them:
+
+✅ Option 3: Use Java 8+ CompletableFuture
+With CompletableFuture, you can register a callback that runs when the result is ready, without blocking at all:
+
+| Method                      | Blocking? | When to Use                               |
+| --------------------------- | --------- | ----------------------------------------- |
+| `Future.isDone()` + `get()` | No        | When you want to poll for completion      |
+| `CompletionService`         | No        | Many tasks, want results as they complete |
+| `CompletableFuture`         | No        | Modern async flow with callbacks          |
