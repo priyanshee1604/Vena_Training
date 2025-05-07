@@ -18,6 +18,7 @@ public class Asset {
         return "Asset{id='" + id + "', name='" + name + "'}";
     }
 
+    //Q1. Why is it important to override equals and hashcode method here.
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
