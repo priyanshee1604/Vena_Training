@@ -9,6 +9,7 @@ public class Main {
     BookingRequest req5 = new BookingRequest("Narendra");
     BookingRequest req6 = new BookingRequest("Sumitra");
     BookingRequest req7 = new BookingRequest("Priyansh");
+    BookingRequest req8 = new BookingRequest("Priyanshee");
 
     FlightBooking bookings = new FlightBooking();
     bookings.addBooking(req1);
@@ -18,6 +19,7 @@ public class Main {
     bookings.addBooking(req5);
     bookings.addBooking(req6);
     bookings.addBooking(req7);
+    bookings.addBooking(req8);
 
     System.out.println("Waiting Bookings \n");
     bookings.printWaitingBookings();

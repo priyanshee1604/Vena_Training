@@ -11,6 +11,10 @@ public class FlightBooking {
   Map<String, Integer> confirmedBookings = new HashMap<>();
 
   public void addBooking(BookingRequest request) {
+    if (bookingQueue.contains(request) || confirmedBookings.containsKey(request.getPassengerName())) {
+      System.out.println("Booking already done for the passenger " + request);
+      return;
+    }
     bookingQueue.offer(request);
   }
 
