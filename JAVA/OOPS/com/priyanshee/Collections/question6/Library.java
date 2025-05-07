@@ -15,7 +15,7 @@ public class Library {
 
     public void printBooksByGenre(String genre) {
         System.out.println("\nBooks in genre: " + genre);
-        catalog.getOrDefault(genre, Collections.emptySet())
+        catalog.get(genre)
                 .forEach(System.out::println);
     }
 
