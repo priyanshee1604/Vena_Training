@@ -23,15 +23,16 @@ public class Player {
         this.score = score;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return score == player.score && Objects.equals(name, player.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, score);
-    }
+    //no need to override equals and hashcode here: Reason check notes.txt
+//    @Override
+//    public boolean equals(Object o) {
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Player player = (Player) o;
+//        return score == player.score && Objects.equals(name, player.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name, score);
+//    }
 }

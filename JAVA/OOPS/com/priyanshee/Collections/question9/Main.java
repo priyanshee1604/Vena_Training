@@ -6,12 +6,14 @@ public class Main {
         Player p2 = new Player("Shriya", 89);
         Player p3 = new Player("Parnika", 95);
         Player p4 = new Player("Priya", 98);
+        Player p5 = new Player("P", 95);
 
         Leaderboard board = new Leaderboard();
         board.addPlayer(p1);
         board.addPlayer(p2);
         board.addPlayer(p3);
         board.addPlayer(p4);
+        board.addPlayer(p5);
 
         board.printLeaderboard();
         System.out.println("------------");

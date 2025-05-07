@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Leaderboard {
-    Set<Player> players = new TreeSet<>(Comparator.comparing(Player::getScore).reversed());
+    Set<Player> players = new TreeSet<>(Comparator.comparing(Player::getScore).reversed().thenComparing(Player::getName));
 
     public void addPlayer(Player player) {
         players.add(player);
