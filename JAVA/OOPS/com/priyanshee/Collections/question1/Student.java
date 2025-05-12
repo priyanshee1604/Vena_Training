@@ -1,11 +1,11 @@
 package com.priyanshee.Collections.question1;
 
 class Student {
-    private int id;
-    private String name;
-    private int age;
-    private double grade;
-    private String branch;
+    private final int id;
+    private final String name;
+    private final int age;
+    private final double grade;
+    private final String branch;
 
     public Student(int id, String name, int age, double grade, String branch) {
         this.id = id;

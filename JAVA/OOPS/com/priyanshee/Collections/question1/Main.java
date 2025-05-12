@@ -3,12 +3,10 @@ package com.priyanshee.Collections.question1;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
         List<Student> students =  new ArrayList<>(15);
-        //ArrayList<Student> student = new ArrayList<Student>(15);
 
         //Storing 15 students in array list.
         students.add(new Student(1, "Alice", 20, 8.5, "CSE"));
@@ -33,6 +31,9 @@ public class Main {
         System.out.println("-------------------------");
 
         //sort by branch and grades
+        //here I am able to call comparing method on Comparator interface as the method define is static,
+        //thus just like normal static methods that belongs to class this static method belong to interface.
+        //thus can call directly
         students.stream().sorted(Comparator.comparing(Student::getBranch).thenComparing(Comparator.comparing(Student::getGrade).reversed())).forEach(System.out::println);
     }
 }
