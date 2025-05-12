@@ -1,9 +1,9 @@
 package com.priyanshee.dayone.question3;
 
 public class BankAccount {
-    private String accountHolder;
+    private final String accountHolder;
     private double balance;
-    private long accountNumber;
+    private final long accountNumber;
 
     public BankAccount(String accountHolder, int balance, int accountNumber) {
         System.out.println("Setting up the Account for you :)");
@@ -13,10 +13,8 @@ public class BankAccount {
         this.accountNumber = accountNumber;
     }
 
-    public void getAccountHoldersDetail() {
-        System.out.println("Name of the account holder is " + accountHolder + ".");
-        System.out.println("Total Balance: " + balance);
-        System.out.println("Account Number: " + accountNumber);
+    public String getAccountHoldersDetail() {
+        return "Name: " + accountHolder + "\nBalance: " + balance + "\nAccount Number: " + accountNumber;
     }
 
     public void setBalance(double balance) {

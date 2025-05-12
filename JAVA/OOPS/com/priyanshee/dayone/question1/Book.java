@@ -2,9 +2,10 @@ package com.priyanshee.dayone.question1;
 
 //made the class public thus it can be used inside this package anywhere, similarly for the methods
 public class Book {
-    private  String title;
-    private String author;
-    private int ISBN;
+    //as the value of the variables do not change.
+    private final String title;
+    private final String author;
+    private final int ISBN;
 
    public Book(String title, String author, int ISBN) {
        this.title = title;
@@ -20,7 +21,7 @@ public class Book {
    }
 
    //creating a new method getTitle because we need it when i need
-    //to search in library by its title.
+   //to search in library by its title.
     public String getTitle() {
        return title;
     }

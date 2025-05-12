@@ -1,19 +1,13 @@
 package com.priyanshee.dayone.BankAccount;
 
-abstract class BankAccount {
-    //made them private thus Encapsulation
-    private String accountHolderName;
-    private String accountNumber;
+abstract class BankAccount implements Transactions{
+    //made them private thus Encapsulation and made getters and setter for them if required.
+    private final String accountNumber;
     private double balance;
 
-    public BankAccount(String accountHolderName, String accountNumber, double balance) {
-        this.accountHolderName = accountHolderName;
+    public BankAccount(String accountNumber, double balance) {
         this.accountNumber = accountNumber;
-        this.balance = balance;
-    }
-
-    public String getAccountHolderName() {
-        return accountHolderName;
+        setBalance(balance);
     }
 
     public String getAccountNumber() {
@@ -24,24 +18,34 @@ abstract class BankAccount {
         return balance;
     }
 
+    protected void setBalance(double balance) {
+        if (balance < 0) {
+            System.out.println("Invalid amout");
+            return;
+        }
+        this.balance = balance;
+    }
+
+    @Override
     public void deposit(double amount) {
         if (amount > 0) {
-            balance = balance + amount;
-            System.out.println("Deposited: " + amount + " New Balance: " + balance);
+            setBalance(getBalance() + amount);
+            System.out.println("SavingsAccount: Deposited $" + amount + " | New Balance: $" + getBalance());
         } else {
             System.out.println("Invalid deposit amount.");
         }
     }
 
+    @Override
     public void withdraw(double amount) {
-        if (amount > 0 && balance >= amount) {
-            balance = balance - amount;
-            System.out.println("Withdrew: " + amount + " New Balance: " + balance);
+        if (amount > 0 && amount <= getBalance()) {
+            setBalance(getBalance() - amount);
+            System.out.println("SavingsAccount: Withdrew $" + amount + " | New Balance: $" + getBalance());
         } else {
-            System.out.println("Invalid deposit amount.");
+            System.out.println("Invalid withdrawal or insufficient balance.");
         }
     }
 
-    //abstract method for polymorphism
+    //abstract method for polymorphism for overriding in base class
     public abstract void displayAccountType();
 }

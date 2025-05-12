@@ -1,11 +1,15 @@
 package com.priyanshee.dayone.BankAccount;
 
 public class CurrentAccount extends BankAccount {
-    private double transactionLimit;
+    private final double transactionLimit; //can make it final.
 
-    public CurrentAccount(String accountHolderName, String accountNumber, double initialBalance, double transactionLimit) {
-        super(accountHolderName, accountNumber, initialBalance);
+    public CurrentAccount( String accountNumber, double initialBalance, double transactionLimit) {
+        super(accountNumber, initialBalance);
         this.transactionLimit = transactionLimit;
+    }
+
+    public double getTransactionLimit() {
+        return transactionLimit;
     }
 
     @Override
@@ -13,14 +17,13 @@ public class CurrentAccount extends BankAccount {
         System.out.println("This is Current Account.");
     }
 
-    public void getTransactionLimit() {
-        System.out.println("The transaction limit for this account is: " + transactionLimit);
-    }
+    @Override
     public void withdraw(double amount) {
-        if(amount > 0 && amount <= getBalance() && amount <= transactionLimit) {
-            super.withdraw(amount);
+        if (amount > 0 && amount <= getBalance() && amount <= getTransactionLimit()) {
+            setBalance(getBalance() - amount);
+            System.out.println("SavingsAccount: Withdrew $" + amount + " | New Balance: $" + getBalance());
         } else {
-            System.out.println("Invalid Transaction.");
+            System.out.println("Invalid withdrawal or insufficient balance or Not in transaction limit.");
         }
     }
 }

@@ -1,11 +1,16 @@
 package com.priyanshee.dayone.question8;
 
 public class BankAccount {
-    String name;
-    double balance;
-    String type;
+    enum AccountType {
+        SAVINGS,
+        CURRENT
+    }
 
-    public BankAccount(String name, double balance, String type) {
+    private final String name;
+    private double balance;
+    private final AccountType type;
+
+    public BankAccount(String name, double balance, AccountType type) {
         this.name = name;
         this.balance = balance;
         this.type = type;
@@ -20,10 +25,11 @@ public class BankAccount {
         }
     }
 
+    //TODO: user loggers
     public void withdraw(double amount) {
         if(amount > 0 && amount <= balance) {
             balance = balance - amount;
-            System.out.println("Withdrew: " + amount + "New Balance: " + balance);
+            System.out.println("Withdrew: " + amount + " New Balance: " + balance);
         } else {
             System.out.println("Invalid amount or insufficient balance.");
         }

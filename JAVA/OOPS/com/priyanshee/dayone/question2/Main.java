@@ -5,10 +5,10 @@ public class Main {
         Vehicle vehicle = new Vehicle(10, 50);
         vehicle.getMileage();
 
-        Car car = new Car();
-        car.getMileage();
+        Vehicle car = new Car();
+        System.out.println("Mileage of the car is " + car.getMileage());
 
-        Truck truck = new Truck();
-        truck.getMileage();
+        Vehicle truck = new Truck();
+        System.out.println("Mileage of the truck is " + truck.getMileage());
     }
 }

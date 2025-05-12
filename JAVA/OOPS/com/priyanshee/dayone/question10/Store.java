@@ -1,7 +1,7 @@
 package com.priyanshee.dayone.question10;
 
 public class Store {
-    Product[] products;
+    private final Product[] products;
 
     public Store(Product[] products) {
         this.products = products;
@@ -10,8 +10,8 @@ public class Store {
     public void displayAllProducts() {
         System.out.println("Displaying all the products: ");
         System.out.println("-----------------------");
-        for(int i = 0; i<products.length; i++) {
-            products[i].displayingProducts();
+        for (Product product : products) {
+            product.displayingProducts();
         }
     }
 
@@ -19,18 +19,18 @@ public class Store {
         if(products.length == 0) return null;
 
         Product highest = products[0];
-        for(int i = 0; i < products.length; i++) {
-            if(products[i].getPrice() > highest.getPrice()) {
-                highest = products[i];
+        for (Product product : products) {
+            if (product.getPrice() > highest.getPrice()) {
+                highest = product;
             }
         }
         return highest;
     }
 
     public Product searchProductByName(String name) {
-        for(int i = 0; i < products.length; i++) {
-            if(products[i].getName().equalsIgnoreCase(name))
-                return products[i];
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(name))
+                return product;
         }
         return null;
     }

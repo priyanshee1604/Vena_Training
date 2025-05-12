@@ -2,24 +2,23 @@ package com.priyanshee.dayone.question5;
 
 public class FreeLancer extends Employee {
     long hours;
-    long payperhour;
+    long payPerHour;
 
-    public FreeLancer(String name, int id, long hours, long payperhour) {
-        super(name, id, "Freelancer", hours * payperhour);
+    public FreeLancer(String name, int id, long hours, long payPerHour) {
+        super(name, id, "Freelancer", hours * payPerHour);
         this.hours = hours;
-        this.payperhour = payperhour;
+        this.payPerHour = payPerHour;
     }
 
-    public void getDetails() {
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Role: " + role);
-        System.out.println("Billed: " + salary);
+    @Override
+    public String getDetails() {
+        return "ID: " + id + "\nName: " + name + "\nRole: " + role + "\nBilled: " + salary;
     }
 
+    @Override
     public void calculateSalary() {
-        System.out.println("Hourly income: " +  payperhour);
+        System.out.println("Hourly income: " +  payPerHour);
         System.out.println("Hours worked: " +  hours);
-        System.out.println("Total Billed: " + payperhour * hours);
+        System.out.println("Total Billed: " + payPerHour * hours);
     }
 }

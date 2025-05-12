@@ -2,12 +2,13 @@ package com.priyanshee.dayone.BankAccount;
 
 public class Main {
     public static void main(String[] args) {
-        SavingAccount savingAccount =  new SavingAccount("Priyanshee Sisodiya", "1234", 37824, 5);
+        //make parents reference and store child's obj in it to properly see overriding.
+        BankAccount savingAccount =  new SavingAccount("1234", 10000);
+
         savingAccount.displayAccountType();
         System.out.println("The account number is: " + savingAccount.getAccountNumber());
-        System.out.println("The account hodlers name is: " + savingAccount.getAccountHolderName());
         System.out.println("Current Balance: " + savingAccount.getBalance());
-        System.out.println("Withdraw momney 1000 Rs.");
+        System.out.println("Withdraw money 1000 Rs.");
         savingAccount.withdraw(1000);
         System.out.println("Current Balance: " + savingAccount.getBalance());
         System.out.println("Deposit money 4000 Rs.");
@@ -16,14 +17,16 @@ public class Main {
 
         System.out.println("-----------------------");
 
-        CurrentAccount currentAccount = new CurrentAccount("Rishi", "34224", 23480, 1000);
+        //cannot make reference of the parent as BankAccount class do not have getTransactionLimit method
+        //it is only in the CurrentAccount and during compilation it is checked with the reference of the
+        //created and not with the object thus throws a compile time error cannot find symbol.
+        CurrentAccount currentAccount = new CurrentAccount("34224", 20000, 1000);
         currentAccount.displayAccountType();
-        System.out.println("The account number is: " + savingAccount.getAccountNumber());
-        System.out.println("The account hodlers name is: " + savingAccount.getAccountHolderName());
-        System.out.println("Current Balance: " + savingAccount.getBalance());
-        currentAccount.getTransactionLimit();
+        System.out.println("The account number is: " + currentAccount.getAccountNumber());
+        System.out.println("Current Balance: " + currentAccount.getBalance());
+        System.out.println("Transaction limit of the account is: " + currentAccount.getTransactionLimit());
         currentAccount.deposit(5000);
         currentAccount.withdraw(1000);
-        System.out.println("Current Balance: " + savingAccount.getBalance());
+        System.out.println("Current Balance: " + currentAccount.getBalance());
     }
 }

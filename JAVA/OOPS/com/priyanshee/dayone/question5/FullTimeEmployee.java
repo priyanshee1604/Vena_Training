@@ -6,13 +6,12 @@ public class FullTimeEmployee extends Employee {
         super(name, id, "Full Time Employee", salary);
     }
 
-    public void getDetails() {
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Role: " + role);
-        System.out.println("Salary: " + salary);
+    @Override
+    public String getDetails() {
+        return "ID: " + id + "\nName: " + name + "\nRole: " + role + "\nBilled: " + salary;
     }
 
+    @Override
     public void calculateSalary() {
         System.out.println("Monthly salary is: " + salary / 12);
     }

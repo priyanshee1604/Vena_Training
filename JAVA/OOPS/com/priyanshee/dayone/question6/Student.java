@@ -2,8 +2,8 @@ package com.priyanshee.dayone.question6;
 
 public class Student {
     private static int totalStudents = 0;
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
 
     public  Student(String name, int id) {
         this.name = name;

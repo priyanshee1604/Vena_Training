@@ -14,7 +14,7 @@ public class Vehicle {
 
     // s = d/t
     // m = d/f
-    protected void getMileage() {
-        System.out.println("The mileage of the vehicle is " + (speed * 10) / fuelCapacity);
+    protected double getMileage() {
+        return (speed * 10) / fuelCapacity;
     }
 }

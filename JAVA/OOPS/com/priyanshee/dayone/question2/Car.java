@@ -2,8 +2,8 @@ package com.priyanshee.dayone.question2;
 
 public class Car extends  Vehicle {
     // so the child class constructor automatically tries to
-    // call parent class non-arg constructor but in case when parent
-    // class do not have a no-rg constructor, then we need to call the defined
+    // call parent class no-arg constructor but in case when parent
+    // class do not have a no-arg constructor, then we need to call the defined
     // parent class constructor, like parameterised constructor.
 
     public Car() {
@@ -15,13 +15,14 @@ public class Car extends  Vehicle {
 
     }
 
-    //the child class return type should be subtype of
+    //the child class method return type should be subtype of
     // the parent class method return type.
 
     //the access modifier could be bigger than the original
     // method cannot decrease the access, always increase it.
     // thus either protected or public
-    protected void getMileage() {
-        System.out.println("The mileage of a car is " + (speed * 5) / fuelCapacity);
+    @Override
+    protected double getMileage() {
+        return  (speed * 5) / fuelCapacity;
     }
 }
