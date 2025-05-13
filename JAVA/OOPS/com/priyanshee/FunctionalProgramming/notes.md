@@ -165,13 +165,6 @@ You can check if a class supports `stream()` by seeing if it implements **`java.
 > "Arrays and Maps don't directly support `.stream()` because they don't implement `Collection`. Arrays can be streamed using `Arrays.stream()` utility method, which internally uses a Spliterator. Maps provide Collection views like `keySet()`, `values()`, and `entrySet()`, which implement `Collection`, allowing you to call `.stream()` on them to process keys, values, or entries."
 
 ---
-
-### Do you want me to give you a **diagram comparing how List, Arrays, and Map get Stream views?** (flowchart style for interview prep)
-
-Reply with **"Yes, show me the diagram"** if you'd like! 😊
-
-
----
 ### **Key Characteristics of a Stream View:**
 
 1. **Immutable (non-modifying)**:
@@ -441,3 +434,43 @@ Here are some key **terminal operations** in the Stream API that **do not return
 These operations mark the end of the Stream processing and **consume** the Stream, returning values of different types (e.g., collections, optional, primitives, booleans) instead of a Stream itself.
 
 ---
+
+| Method Name                          | Type         | Input Parameters                                     | Return Type | Purpose / Function                                      |
+| ------------------------------------ | ------------ | ---------------------------------------------------- | ----------- | ------------------------------------------------------- |
+| **filter**                           | Intermediate | Predicate\<? super T>                                | Stream<T>   | Filters elements based on a condition                   |
+| **map**                              | Intermediate | Function\<? super T, ? extends R>                    | Stream<R>   | Transforms elements from T to R                         |
+| **flatMap**                          | Intermediate | Function\<? super T, ? extends Stream\<? extends R>> | Stream<R>   | Flattens nested structures                              |
+| **distinct**                         | Intermediate | None                                                 | Stream<T>   | Removes duplicate elements                              |
+| **sorted()**                         | Intermediate | None                                                 | Stream<T>   | Sorts elements in natural order                         |
+| **sorted(Comparator)**               | Intermediate | Comparator\<? super T>                               | Stream<T>   | Sorts elements by custom comparator                     |
+| **limit**                            | Intermediate | long maxSize                                         | Stream<T>   | Limits stream to a fixed number of elements             |
+| **skip**                             | Intermediate | long n                                               | Stream<T>   | Skips the first n elements                              |
+| **peek**                             | Intermediate | Consumer\<? super T>                                 | Stream<T>   | Allows inspecting elements for debugging                |
+| **forEach**                          | Terminal     | Consumer\<? super T>                                 | void        | Performs an action on each element                      |
+| **forEachOrdered**                   | Terminal     | Consumer\<? super T>                                 | void        | Performs action in encounter order                      |
+| **collect**                          | Terminal     | Collector\<? super T, A, R>                          | R           | Reduces stream to a collection, list, map, string, etc. |
+| **reduce(BinaryOperator)**           | Terminal     | BinaryOperator<T>                                    | Optional<T> | Reduces stream to a single aggregated result            |
+| **reduce(identity, BinaryOperator)** | Terminal     | T identity, BinaryOperator<T>                        | T           | Reduces stream to result with identity                  |
+| **anyMatch**                         | Terminal     | Predicate\<? super T>                                | boolean     | Returns true if any element matches condition           |
+| **allMatch**                         | Terminal     | Predicate\<? super T>                                | boolean     | Returns true if all elements match condition            |
+| **noneMatch**                        | Terminal     | Predicate\<? super T>                                | boolean     | Returns true if no elements match condition             |
+| **findFirst**                        | Terminal     | None                                                 | Optional<T> | Returns the first element if present                    |
+| **findAny**                          | Terminal     | None                                                 | Optional<T> | Returns any element (useful for parallel streams)       |
+| **count**                            | Terminal     | None                                                 | long        | Returns count of elements in stream                     |
+| **toArray()**                        | Terminal     | None                                                 | Object\[]   | Converts stream to array                                |
+| **toArray(generator)**               | Terminal     | IntFunction\<A\[]> generator                         | A\[]        | Converts stream to array of type A                      |
+
+
+                  
+---
+
+| **Category**           | **Methods**                                              |
+| ---------------------- | -------------------------------------------------------- |
+| **Filtering**          | filter, distinct, skip, limit                            |
+| **Mapping**            | map, flatMap                                             |
+| **Sorting**            | sorted                                                   |
+| **Terminal Actions**   | forEach, forEachOrdered, collect, reduce, toArray, count |
+| **Matching / Finding** | anyMatch, allMatch, noneMatch, findFirst, findAny        |
+| **Utility**            | peek (for debugging/logging)                             |
+
+
