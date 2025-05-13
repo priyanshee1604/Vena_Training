@@ -3,6 +3,8 @@ package com.priyanshee.Collections.question1;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,15 +27,19 @@ public class Main {
         students.add(new Student(14, "Nina", 21, 8.2, "EEE"));
         students.add(new Student(15, "Oscar", 22, 7.0, "ME"));
 
-        //sorting students by branch.
-        students.stream().sorted(Comparator.comparing(Student::getBranch)).forEach(System.out::println);
-
-        System.out.println("-------------------------");
-
         //sort by branch and grades
         //here I am able to call comparing method on Comparator interface as the method define is static,
         //thus just like normal static methods that belongs to class this static method belong to interface.
         //thus can call directly
         students.stream().sorted(Comparator.comparing(Student::getBranch).thenComparing(Comparator.comparing(Student::getGrade).reversed())).forEach(System.out::println);
+        System.out.println("--------------------------");
+
+
+        //group students by branch
+        Map<String, List<Student>> studentsByBranch = students.stream().collect(Collectors.groupingBy(Student::getBranch));
+        studentsByBranch.forEach((branch, student) -> {
+            System.out.println("\nBranch: " + branch);
+            student.forEach(System.out::println);
+        });
     }
 }
