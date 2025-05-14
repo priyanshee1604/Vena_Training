@@ -1,25 +1,29 @@
-Answer 1.
-❌ What happens if you don't override equals() and hashCode()?
+### Answer 1.
+### ❌ What happens if you don't override equals() and hashCode()?
 Let’s say you add this:
-
+````java
 tracker.addAsset("IT", new Asset("A001", "Laptop"));
 tracker.addAsset("IT", new Asset("A001", "Laptop")); // same id and name
 Without overridden equals() and hashCode():
+````
 Both objects are different instances (different memory locations).
 
 Java compares them using default Object.equals(), which checks:
-
+````java
 this == other  // reference equality, not content equality
+````
 So HashSet thinks they are different and adds both.
 
 Result:
-
+````java
 Set<Asset> = [Asset{id='A001', name='Laptop'}, Asset{id='A001', name='Laptop'}]
+```` 
 ❌ Duplicate appears.
 
-✅ What happens with overridden equals() and hashCode():
+### ✅ What happens with overridden equals() and hashCode():
 If you override them like this:
 
+````java
 @Override
 public boolean equals(Object o) {
     if (this == o) return true;
@@ -32,17 +36,12 @@ public boolean equals(Object o) {
 public int hashCode() {
     return Objects.hash(id);
 }
+````
 Then both objects (even if they are different instances) will be considered equal if their id is the same.
 
 So the second call to add() will be ignored by the Set.
 
 ✅ No duplicate is stored.
-
---------------------------------
-
-when to overrider hashcode() and equals() and when not to:
-
-Exactly — you're spot on. Let's break this down clearly:
 
 ---
 
@@ -103,5 +102,3 @@ If you don’t override `equals()` and `hashCode()`:
 | Using **custom objects as Map keys** | ✅ Yes                                                                         |
 | Storing **String / Integer**         | ❌ No                                                                          |
 | Only using **Lists / arrays**        | ❌ Not required for equality checks unless you call `contains()` or `remove()` |
-
----

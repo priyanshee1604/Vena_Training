@@ -6,28 +6,25 @@ import java.util.Map;
 import java.util.Set;
 
 public class CompanyAssetTracker {
-    private Map<String, Set<Asset>> departmentAssets = new HashMap<>();
-    private Set<String> globalAssetIds = new HashSet<>();
+    private final Map<String, Set<Asset>> departmentAssets = new HashMap<>();
+    private final Set<String> globalAssetIds = new HashSet<>();
 
-    public boolean addAsset(String department, Asset asset) {
+    public void addAsset(String department, Asset asset) {
         if (globalAssetIds.contains(asset.getId())) {
             System.out.println("Duplicate asset ID detected: " + asset.getId());
-            return false;
+            return;
         }
 
         departmentAssets.putIfAbsent(department, new HashSet<>());
         departmentAssets.get(department).add(asset);
         globalAssetIds.add(asset.getId());
         System.out.println("Asset added to " + department + ": " + asset);
-        return true;
     }
 
     public void printAssetsByDepartment() {
-        departmentAssets.entrySet().stream().forEach(
-                entry -> {
-                    System.out.println("\nDepartment: " + entry.getKey());
-                    System.out.println(entry.getValue());
-                }
-        );
+        departmentAssets.forEach((key, value) -> {
+            System.out.println("\nDepartment: " + key);
+            value.forEach(System.out::println);
+        });
     }
 }
