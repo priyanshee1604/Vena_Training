@@ -3,7 +3,7 @@ package com.priyanshee.Collections.question13;
 import java.util.Objects;
 
 public class BookingRequest {
-  private String passengerName;
+  private final String passengerName;
 
   public BookingRequest(String passengerName) {
     this.passengerName = passengerName;
@@ -18,7 +18,7 @@ public class BookingRequest {
     return "passengerName: " + passengerName;
   }
 
-  //need to override it to check if the passenger with same has done the booking alreday or not.
+  //need to override it to check if the passenger with same has done the booking already or not.
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
