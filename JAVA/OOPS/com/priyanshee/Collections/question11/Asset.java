@@ -3,8 +3,8 @@ package com.priyanshee.Collections.question11;
 import java.util.Objects;
 
 public class Asset {
-    private String id;
-    private String name;
+    private final String id;
+    private final String name;
 
     public Asset(String id, String name) {
         this.id = id;
@@ -15,7 +15,7 @@ public class Asset {
     public String getName() { return name; }
 
     public String toString() {
-        return "Asset{id='" + id + "', name='" + name + "'}";
+        return "id='" + id + "', name='" + name;
     }
 
     //Q1. Why is it important to override equals and hashcode method here.
