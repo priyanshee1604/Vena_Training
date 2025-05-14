@@ -3,7 +3,11 @@ package com.priyanshee.Collections.handson.model;
 import java.util.Objects;
 
 public class Student {
-    private String id, name, email, year, branch;
+    private final String id;
+    private final String name;
+    private final String email;
+    private final String year;
+    private final String branch;
 
     public Student(String id, String name, String email, String year, String branch) {
         this.id = id;
