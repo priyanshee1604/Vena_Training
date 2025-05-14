@@ -1,10 +1,10 @@
 package com.priyanshee.Collections.question14;
 
 public class Order {
-  private int orderNumber;
-  private String orderType; //online ordre can be pushed in last
-  private String customerName;
-  private String foodOrdered;
+  private final int orderNumber;
+  private final String orderType; //online ordre can be pushed in last
+  private final String customerName;
+  private final String foodOrdered;
 
   public Order(int orderNumber, String orderType, String customerName, String foodOrdered) {
     this.orderNumber = orderNumber;

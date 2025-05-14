@@ -6,8 +6,8 @@ import java.util.Deque;
 import java.util.List;
 
 public class Orders {
-  private Deque<Order> orderList = new ArrayDeque<>();
-  private List<Order> orderHistory = new ArrayList<>();
+  private final Deque<Order> orderList = new ArrayDeque<>();
+  private final List<Order> orderHistory = new ArrayList<>();
 
   public void placeOrder(Order order) {
     if(order.getOrderType().equalsIgnoreCase("online")) {
@@ -17,6 +17,7 @@ public class Orders {
     }
   }
 
+  //fulfilling offline orders.
   public void fulfillOrderFront() {
     Order order = orderList.pollFirst();
     if(order != null) {
@@ -24,6 +25,7 @@ public class Orders {
     }
   }
 
+  //fulfilling online orders
   public void fulfillOrderLast() {
     Order order = orderList.pollLast();
     if(order != null) {
