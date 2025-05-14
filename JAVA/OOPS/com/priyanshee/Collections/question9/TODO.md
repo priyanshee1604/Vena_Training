@@ -1,44 +1,41 @@
-❌ Problem with your current Comparator
+### ❌ Problem with your current Comparator
 Let’s say you try to add:
 
 new Player("A", 90);
 new Player("B", 90);
 Both have the same score, so Comparator.comparing(Player::getScore) will treat them as equal → second one won’t be added!
 
-✅ Solution: Refine the Comparator:
+### ✅ Solution: Refine the Comparator:
 You need to make the comparator more robust by using name as a tiebreaker:
 
-java
-Copy
-Edit
+```java
+
 Set<Player> players = new TreeSet<>(
     Comparator.comparingInt(Player::getScore).reversed()
               .thenComparing(Player::getName)
 );
+```
+
 Now, players with the same score are not considered equal unless their names match too.
 
-🔍 TreeSet in Java:
+### 🔍 TreeSet in Java:
 Internally uses a Red-Black Tree.
 
-Enforces:
-
-Sorted Order
-
-Uniqueness
+Enforces: Sorted Order, Uniqueness
 
 But unlike HashSet which uses equals() and hashCode(), the TreeSet relies on the compareTo() or Comparator result.
 
 📌 So, in a TreeSet<Player>:
-java
-Copy
-Edit
+```java
 TreeSet<Player> players = new TreeSet<>(Comparator.comparing(Player::getScore).reversed());
+```
+
 Sorting: by score (descending)
 
 Uniqueness: also based only on score
 → So two players with the same score will be treated as duplicates, even if their names are different.
 
-🧠 Comparator = Defines "Key" in TreeSet
+ ### 🧠 Comparator = Defines "Key" in TreeSet
 In a TreeMap/TreeSet, the comparator acts like a key extractor:
 
 If Comparator.compare(a, b) == 0, the TreeSet thinks a and b are equal.

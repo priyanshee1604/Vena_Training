@@ -15,22 +15,22 @@ public class Main {
 
         Employee emp1 = new Employee(0, "Priyanshee", "Intern", "Engineering");
         Employee emp2 = new Employee(0, "Priyansh", "Intern", "Engineering");
-        Employee emp3 = new Employee(1, "Priy", "Intern", "Engineering");
+        Employee emp3 = new Employee(1, "Priya", "SDE", "Engineering");
 
-        Employee emp4 = new Employee(1, "Ansh", "Intern", "Tools");
-        Employee emp11 = new Employee(1, "Kritika", "Intern", "Tools");
+        Employee emp4 = new Employee(1, "Ansh", "SDE", "Tools");
+        Employee emp11 = new Employee(1, "Kritika", "SDE", "Tools");
         Employee emp5 = new Employee(0, "Shee", "Intern", "Tools");
         Employee emp6 = new Employee(0, "Shree", "Intern", "Tools");
 
-        Employee emp7 = new Employee(1, "Rriyanshee", "Intern", "People and Talent");
-        Employee emp8 = new Employee(1, "Kriyanshee", "Intern", "People and Talent");
+        Employee emp7 = new Employee(1, "Rriyanshee", "HR", "People and Talent");
+        Employee emp8 = new Employee(1, "Kriyanshee", "HR", "People and Talent");
         Employee emp9 = new Employee(0, "Rriyansh", "Intern", "People and Talent");
         Employee emp10 = new Employee(0, "Kriyansh", "Intern", "People and Talent");
 
-        Employee emp12 = new Employee(1, "Parnika", "Intern", "Employer Branding");
+        Employee emp12 = new Employee(1, "Parnika", "MA", "Employer Branding");
         Employee emp13 = new Employee(0, "Shriya", "Intern", "Employer Branding");
         Employee emp14 = new Employee(0, "Harshita", "Intern", "Employer Branding");
-        Employee emp15 = new Employee(1, "Annu", "Intern", "Employer Branding");
+        Employee emp15 = new Employee(1, "Annu", "MA", "Employer Branding");
 
         hierarchy.putIfAbsent(manager1, new TreeMap<>());
         hierarchy.get(manager1).putIfAbsent(0, List.of(emp1, emp2));
@@ -50,12 +50,12 @@ public class Main {
 
         hierarchy.entrySet().stream().forEach( entry ->{
             Manager man = entry.getKey();
-            System.out.println(man.getName() + ", department: " + man.getDepartment());
+            System.out.println(man);
             TreeMap<Integer, List<Employee>> value = entry.getValue();
-            value.entrySet().stream().forEach(manHie -> {
-                Integer level = manHie.getKey();
-                System.out.println("level: "+level);
-                System.out.println("employee list:  " + manHie.getValue());
+            value.entrySet().stream().forEach(manHier -> {
+                Integer level = manHier.getKey();
+                System.out.println("level: " + level);
+                System.out.println("employee list:  " + manHier.getValue());
             });
         });
     }
