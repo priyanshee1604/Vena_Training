@@ -4,9 +4,9 @@ package com.priyanshee.Collections.question4;
 //1. Use PriorityQueue to order by closest deadline, then highest priority.
 //2. Poll and print tasks as they should be executed.
 public class Task {
-    private String name;
-    private int priority;
-    private int deadline;
+    private final String name;
+    private final int priority;
+    private final int deadline;
 
     public Task(String name, int priority, int deadline) {
         this.name = name;
