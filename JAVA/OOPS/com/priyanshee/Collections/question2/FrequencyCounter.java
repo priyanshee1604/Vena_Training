@@ -10,17 +10,19 @@ public class FrequencyCounter {
         //1. removing the special characters and converting the sentence to all lower case.
         String[] arrayOfWords =  paragraph.toLowerCase().replaceAll("[^a-zA-Z]", " ").split("\\s+");
 
+        //used TreeMap here as to keep the words sorted in alphabetical order
         Map<String, Integer> words = new TreeMap<>();
 
-        for(int i = 0; i < arrayOfWords.length; i++) {
-            if(words.containsKey(arrayOfWords[i])) {
-                words.put(arrayOfWords[i], words.get(arrayOfWords[i]) + 1);
+        for (String arrayOfWord : arrayOfWords) {
+            if (words.containsKey(arrayOfWord)) {
+                words.put(arrayOfWord, words.get(arrayOfWord) + 1);
             } else {
-                words.put(arrayOfWords[i], 1);
+                words.put(arrayOfWord, 1);
             }
         }
 
-        System.out.println("Printing the unique words in alphabetical order: " + words.keySet());
-        System.out.println("Printing the frequency of each word: " + words.entrySet());
+        System.out.println("Number of unique words: " + words.size());
+        System.out.println("Frequency of each word: " + words.entrySet());
+        System.out.println("Words sorted alphabetically: " + words.keySet());
      }
 }
