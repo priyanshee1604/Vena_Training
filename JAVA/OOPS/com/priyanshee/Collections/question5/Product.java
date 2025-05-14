@@ -2,11 +2,11 @@ package com.priyanshee.Collections.question5;
 
 //Create a Product class with id, name, price, rating, and stock.
 public class Product {
-    private int id;
-    private String name;
-    private  double price;
-    private double rating;
-    private int stock;
+    private final int id;
+    private final String name;
+    private final double price;
+    private final double rating;
+    private final int stock;
 
     public Product(int id, String name, double price, double rating, int stock) {
         this.id = id;
