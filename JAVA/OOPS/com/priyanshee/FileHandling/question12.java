@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public class question12 {
     public static void main(String[] args) {
@@ -20,7 +21,7 @@ public class question12 {
                     // Read content from each .txt file
                     Stream<String> lines = Files.lines(file, StandardCharsets.UTF_8);
                     // Append to merged.txt
-                    Files.write(mergedFile, (lines.collect(java.util.stream.Collectors.joining(System.lineSeparator())) + System.lineSeparator()).getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+                    Files.write(mergedFile, (lines.collect(Collectors.joining(System.lineSeparator())) + System.lineSeparator()).getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
                     lines.close();
                 }
             }

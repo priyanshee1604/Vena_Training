@@ -2,8 +2,6 @@ package com.priyanshee.FileHandling;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class question2 {
@@ -31,3 +29,15 @@ public class question2 {
     }
   }
 }
+
+//using fileReader: read one character at a time.
+//read returns the ASCII value of the read character thus need to type cast it.
+//try  (FileReader fr = new FileReader("notes.txt")){
+//    int charachter;
+//    while ((charachter = fr.read()) != -1) {
+//        System.out.println((char) charachter);
+//     }
+//   } catch (IOException e) {
+//     System.out.println("The file " + fileName + " was not found.");
+//      e.printStackTrace();
+//   }

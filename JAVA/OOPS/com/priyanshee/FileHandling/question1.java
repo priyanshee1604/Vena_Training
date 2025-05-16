@@ -10,6 +10,7 @@ public class question1 {
     String context = "This is my first file in JAVA.";
 
     try {
+      //creates a new file and writes to it.
       FileWriter writer = new FileWriter(fileName);
       writer.write(context);
       writer.close();

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,7 +16,7 @@ public class question6 {
         try {
             List<String> lines = Files.readAllLines(filePath);
 
-            System.out.println("Count of word java is " + lines.stream().flatMap(line -> Stream.of(line.split("\\W+")).filter(word -> word.equalsIgnoreCase("java"))).count());
+            System.out.println("Count of word java is " + lines.stream().flatMap(line -> Arrays.stream(line.split("\\W+")).filter(word -> word.equalsIgnoreCase("java"))).count());
 
 
 //            for (String line: lines) {

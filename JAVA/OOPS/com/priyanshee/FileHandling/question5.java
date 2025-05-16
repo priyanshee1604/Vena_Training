@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.function.Function;
 
 public class question5 {
     public static void main(String[] args) {
@@ -28,3 +27,5 @@ public class question5 {
         }
     }
 }
+//Files.copy() deals with files and byte streams, so you'd need FileInputStream / FileOutputStream if using streams.
+//Thus if using Files.copy then always use Paths to create and object of it for the use.
