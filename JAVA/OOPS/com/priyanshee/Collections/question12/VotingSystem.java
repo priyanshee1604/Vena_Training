@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VotingSystem {
-    private Map<String, Integer> voteMap = new HashMap<>();
+    private final Map<String, Integer> voteMap = new HashMap<>();
 
     public void vote(String candidate) {
         voteMap.put(candidate, voteMap.getOrDefault(candidate, 0) + 1);
