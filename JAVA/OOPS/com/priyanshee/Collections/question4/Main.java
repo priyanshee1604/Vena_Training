@@ -10,8 +10,8 @@ public class Main {
         //deadline > priority
         // order by closest deadline, then highest priority.
         //higher the number higher is the priority, smaller the number closest is the deadline
-        Comparator<Task> deadlineNpriority = Comparator.comparing(Task::getDeadline).thenComparing(Comparator.comparing(Task::getPriority).reversed());
-        Queue<Task> todos = new PriorityQueue<>(deadlineNpriority);
+        Comparator<Task> deadlineAndPriority = Comparator.comparing(Task::getDeadline).thenComparing(Comparator.comparing(Task::getPriority).reversed());
+        Queue<Task> todos = new PriorityQueue<>(deadlineAndPriority);
 
         todos.add(new Task("Task1", 1,9));
         todos.add(new Task("Task2", 2,8));
