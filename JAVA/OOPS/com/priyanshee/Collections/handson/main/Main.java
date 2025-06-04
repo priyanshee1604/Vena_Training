@@ -4,6 +4,7 @@ import com.priyanshee.Collections.handson.model.Course;
 import com.priyanshee.Collections.handson.model.Student;
 import com.priyanshee.Collections.handson.service.RegistrationSystem;
 
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -38,6 +39,8 @@ public class Main {
         rs.addCourse(new Course("C103", "OS", "Dr. Kim", 4, 4, Comparator.comparing(Student::getName)));
         rs.addCourse(new Course("C104", "CN", "Dr. Brown", 2, 3, Comparator.comparing(Student::getName)));
         rs.addCourse(new Course("C105", "ML", "Dr. Watson", 3, 5, Comparator.comparing(Student::getName)));
+        rs.addCourse(new Course("C106", "AI", "Dr. Watson", 3, 5, Comparator.comparing(Student::getName)));
+
 
         // Fill C101 (capacity: 3) + 2 on waitlist
         rs.register("S01", "C101");
@@ -82,7 +85,8 @@ public class Main {
             System.out.println("6. Filter Courses by Instructor");
             System.out.println("7. Filter Courses by Credit");
             System.out.println("8. List All Students with Branch");
-            System.out.println("9. Exit");
+            System.out.println("9: List All the Courses");
+            System.out.println("10. Exit");
             System.out.print("Select an option: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -102,6 +106,8 @@ public class Main {
                         String email = sc.nextLine();
                         System.out.print("Enter Year (e.g., 2nd): ");
                         String year = sc.nextLine();
+                        System.out.println("Available branches");
+                        rs.printAllBranches();
                         System.out.print("Enter Branch: ");
                         String branch = sc.nextLine();
 
@@ -141,7 +147,7 @@ public class Main {
                     System.out.print("Enter Course ID to List Students: ");
                     System.out.println("Available Courses: C101–C105");
                     String cid3 = sc.nextLine();
-                    rs.listStudentsInCourse(cid3);
+                    rs.listStudentsInCourseSortedByName(cid3);
                     break;
 
                 case 4:
@@ -155,9 +161,8 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.print("Enter Instructor Name: ");
-                    String instructor = sc.nextLine();
-                    rs.filterCoursesByInstructor(instructor);
+                    System.out.print("Courses by Instructor.");
+                    rs.filterCoursesByInstructor();
                     break;
 
                 case 7:
@@ -172,6 +177,11 @@ public class Main {
                     break;
 
                 case 9:
+                    System.out.println("Listing all the courses available:");
+                    rs.printAllCourses();
+                    break;
+
+                case 10:
                     System.out.println("Exiting system. Goodbye!");
                     return;
 

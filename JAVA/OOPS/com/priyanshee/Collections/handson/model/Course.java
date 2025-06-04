@@ -4,10 +4,13 @@ import java.util.*;
 
 public class Course {
 
-    private String courseId, courseName, instructorName;
-    private int capacity, credits;
-    private TreeSet<Student> enrolledStudents;
-    private Queue<Student> waitlist;
+    private final String courseId;
+    private final String courseName;
+    private final String instructorName;
+    private final int capacity;
+    private final int credits;
+    private final TreeSet<Student> enrolledStudents;
+    private final Queue<Student> waitlist;
 
     public Course(String courseId, String courseName, String instructorName, int capacity, int credits, Comparator<Student> comparator) {
         this.courseId = courseId;
