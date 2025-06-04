@@ -21,7 +21,7 @@ public class Main {
     bookings.addBooking(req7);
     bookings.addBooking(req8);
 
-    System.out.println("Waiting Bookings \n");
+    System.out.println("\nWaiting Bookings: ");
     bookings.printWaitingBookings();
     System.out.println("\n");
     System.out.println("Processing the bookings:");
