@@ -3,9 +3,9 @@ package com.priyanshee.Collections.question10;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private double amount;
-    private String type;
-    private LocalDateTime timestamp;
+    private final double amount;
+    private final String type;
+    private final LocalDateTime timestamp;
 
     public Transaction(double amount, String type, LocalDateTime timestamp) {
         this.amount = amount;
