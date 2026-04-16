@@ -1,6 +1,7 @@
 ## 🧠 Core idea
 
 > **JaCoCo instruments your compiled `.class` files and tracks which instructions are executed during test runs.**
+
 > JaCoCo measures coverage on compiled classes, not on .java files.
 
 ---
